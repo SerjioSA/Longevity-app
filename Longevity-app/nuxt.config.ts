@@ -13,6 +13,10 @@ export default defineNuxtConfig({
         autoprefixer: {},
       },
   },
+  modules: [
+    'nuxt-quasar-ui'
+  ],
+  quasar: { /* */ }
   // devtools: { enabled: true }
   
 })

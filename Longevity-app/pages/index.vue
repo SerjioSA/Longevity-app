@@ -1,6 +1,9 @@
+<script setup>
+
+</script>
 <template>
     <div class="Main">
-        <Alert/>
-        <Profile/>
+        <IndexLogo/>
+        <IndexCards/>
     </div>
 </template>
