@@ -1,0 +1,3 @@
+<template>
+    <DashboardEdit/>
+</template>
