@@ -31,7 +31,7 @@ function loadData() {
     const value = route.query.data
     useNuxtApp().$api.get(`/items/${value}/`).then((response) => {
     editedOrder.value  = response.data;
-    console.log(editedOrder.value)
+    // console.log(editedOrder.value)
     
     order_name.value = editedOrder.value["name"]
     cost.value = editedOrder.value["cost"]

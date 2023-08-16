@@ -2,6 +2,10 @@
 
 
 
+
+
+
+
 const token = useCookie('token')
 
 const passwordLogin = ref("");
@@ -67,10 +71,12 @@ function sendComponentDataLogin() {
 }
 
 function sendComponentDataReg() {
+  const userInfo = useNuxtApp().$auth0.user;
+  
   const data = {
     email: "delet_this",
-    password: passwordReg.value,
-    username: usernameReg.value,
+    password: userInfo.value.email,
+    username: userInfo.value.nickname
   };
  
   useNuxtApp().$api
@@ -85,7 +91,7 @@ function sendComponentDataReg() {
       .then((response) => {
         const token = useCookie('token')
         token.value = response.data.access_token;
-        console.log(token.value)
+        // console.log(token.value)
         // console.log(tokenData.value)
         const router = useRouter();
         router.push({ path: "/dashboard" });

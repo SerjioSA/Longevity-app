@@ -1,5 +1,7 @@
 <script setup>
-
+definePageMeta({
+    middleware:"auth0"
+})
 
 const apiData = ref(null)
  
@@ -16,16 +18,18 @@ const currentOrders = ref([])
 
 
 function logout(){
+    useNuxtApp().$auth0.logout();
     const token = useCookie('token')
     token.value = null
     
-    navigateTo("/auth")
+    
+
 }
 
 function getOrders() {
     useNuxtApp().$api.get("/users/me/").then((response) => {
     currentUserID.value  = response.data.id;
-    console.log(currentUserID.value)
+    // console.log(currentUserID.value)
     useNuxtApp().$api.get(`/users/${currentUserID.value}/items/`)
     .then((response) => {
         currentOrders.value = response.data;

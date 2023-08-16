@@ -25,7 +25,7 @@ function initiateData() {
 function sendOrder(data) {
     useNuxtApp().$api.get("/users/me/").then((response) => {
     currentUserID.value  = response.data.id;
-    console.log(currentUserID.value)
+    // console.log(currentUserID.value)
     useNuxtApp().$api.post(`/users/${currentUserID.value}/items/`,data)
         .then(
             router.push("/dashboard")
